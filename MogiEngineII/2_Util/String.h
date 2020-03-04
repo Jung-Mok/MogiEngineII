@@ -18,9 +18,9 @@ namespace Mogi
 
 	public:
 		// 멀티바이트를 유니코드로 전환
-		static bool									ConvertToUnicode(IN std::string const& strSrc, OUT std::wstring& strWDst);
+		static bool									ConvertToUnicode(IN std::string const& strSrc, OUT std::wstring& wstrDst);
 		// 유니코드를 멀티바이트로 전환
-		static bool									ComvertToMultiByte(IN std::wstring const& strWSrc, OUT std::string& strDst);
+		static bool									ComvertToMultiByte(IN std::wstring const& wstrSrc, OUT std::string& strDst);
 
 	private:
 		std::string									m_String;
