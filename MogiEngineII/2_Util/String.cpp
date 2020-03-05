@@ -50,19 +50,19 @@ namespace Mogi
 		if (true == wstrSrc.empty())
 			return false;
 
+		int const BUFFER_SIZE = ::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, NULL, 0, NULL, NULL);
 
-		int const nLen = ::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, NULL, 0, NULL, NULL);
-		if (!wstrSrc.empty())
-		{
-			char* szMb = new char[nLen];
+		if (true == wstrSrc.empty())
+			return false;
+		
+		char* pMutiBuffer = new char[BUFFER_SIZE + sizeof(char)];
 
-			::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, szMb, nLen, NULL, NULL);
+		::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, pMutiBuffer, BUFFER_SIZE, NULL, NULL);
 
-			strTgt = szMb;
+		strDst = pMutiBuffer;
 
-			delete[] pUNIBuffer;
-			return 0;
-		}
+		delete[] pMutiBuffer;
+
 		return true;
 	}
 
