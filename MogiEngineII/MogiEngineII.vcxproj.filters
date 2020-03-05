@@ -13,14 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="1_Exception">
-      <UniqueIdentifier>{f1c77840-241b-42c2-9321-53dd19b805a5}</UniqueIdentifier>
+    <Filter Include="MogiEngineII">
+      <UniqueIdentifier>{43cce77c-3ac1-4390-85be-956e2fa01745}</UniqueIdentifier>
     </Filter>
-    <Filter Include="2_Util">
+    <Filter Include="MogiEngineII\2_Util">
       <UniqueIdentifier>{04db1aec-b8c8-486d-8242-920acc834479}</UniqueIdentifier>
     </Filter>
-    <Filter Include="2_Util\String">
+    <Filter Include="MogiEngineII\2_Util\String">
       <UniqueIdentifier>{0a092bae-1cc2-4952-99e6-59a8aa11236d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MogiEngineII\1_Exception">
+      <UniqueIdentifier>{f1c77840-241b-42c2-9321-53dd19b805a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -31,10 +34,13 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="2_Util\String.h">
-      <Filter>2_Util\String</Filter>
+      <Filter>MogiEngineII\2_Util\String</Filter>
     </ClInclude>
     <ClInclude Include="MogiUtil.h">
-      <Filter>2_Util</Filter>
+      <Filter>MogiEngineII\2_Util</Filter>
+    </ClInclude>
+    <ClInclude Include="MogiEngineII.h">
+      <Filter>MogiEngineII</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +51,7 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="2_Util\String.cpp">
-      <Filter>2_Util\String</Filter>
+      <Filter>MogiEngineII\2_Util\String</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
