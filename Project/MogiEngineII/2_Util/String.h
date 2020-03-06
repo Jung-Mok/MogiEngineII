@@ -16,13 +16,19 @@ namespace Mogi
 
 		std::wstring								GetWString();
 		bool										Format(char const* pFormat, ...);
+
+		void										Append(char const* strSrc)
+		{
+			m_String += strSrc;
+		}
 		
 
 	public:
 		template<typename T>
 		cString& operator <<(T const& rhs)
 		{
-
+			this->Append(rhs);
+			return *this;
 		}
 
 

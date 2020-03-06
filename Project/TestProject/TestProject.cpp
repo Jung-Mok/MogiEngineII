@@ -13,8 +13,9 @@ int main()
 	Mogi::cString::ConvertToMultiByte(wTest, Test);
 
 	Mogi::cString StringTest;
-	StringTest.GetWString();
+	//StringTest.GetWString();
 	StringTest.Format("test : %d", 111);
+	StringTest << "testtest";
 
 
 	
