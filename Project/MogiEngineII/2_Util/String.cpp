@@ -45,26 +45,31 @@ namespace Mogi
 		return true;
 	}
 
-	bool cString::ComvertToMultiByte(IN std::wstring const& wstrSrc, OUT std::string& strDst)
+	bool cString::ConvertToMultiByte(IN std::wstring const& wstrSrc, OUT std::string& strDst)
 	{
-		if (true == wstrSrc.empty())
-			return false;
-
-		int const BUFFER_SIZE = ::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, NULL, 0, NULL, NULL);
-
-		if (true == wstrSrc.empty())
-			return false;
-		
-		char* pMutiBuffer = new char[BUFFER_SIZE + sizeof(char)];
-
-		::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, pMutiBuffer, BUFFER_SIZE, NULL, NULL);
-
-		strDst = pMutiBuffer;
-
-		delete[] pMutiBuffer;
-
 		return true;
 	}
+
+	//bool cString::ConvertToMultiByte(IN std::wstring const& wstrSrc, OUT std::string& strDst)
+	//{
+	//	//if (true == wstrSrc.empty())
+	//	//	return false;
+
+	//	//int const BUFFER_SIZE = ::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, NULL, 0, NULL, NULL);
+
+	//	//if (true == wstrSrc.empty())
+	//	//	return false;
+	//	//
+	//	//char* pMutiBuffer = new char[BUFFER_SIZE + sizeof(char)];
+
+	//	//::WideCharToMultiByte(CP_ACP, 0, wstrSrc.c_str(), -1, pMutiBuffer, BUFFER_SIZE, NULL, NULL);
+
+	//	//strDst = pMutiBuffer;
+
+	//	//delete[] pMutiBuffer;
+
+	//	return true;
+	//}
 
 }
 

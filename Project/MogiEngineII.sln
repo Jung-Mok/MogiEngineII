@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MogiEngineII", "MogiEngineII\MogiEngineII.vcxproj", "{305E818F-2B8C-47EA-9058-CF4070E1A7C1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProject", "TestProject\TestProject.vcxproj", "{67643712-FEBF-404A-8F48-FEB091DD8F45}"
+	ProjectSection(ProjectDependencies) = postProject
+		{305E818F-2B8C-47EA-9058-CF4070E1A7C1} = {305E818F-2B8C-47EA-9058-CF4070E1A7C1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

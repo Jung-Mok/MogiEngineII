@@ -6,7 +6,15 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	std::string Test("test");
+	std::wstring wTest(L"temp");
+
+	Mogi::cString::ConvertToUnicode(Test, wTest);
+	Mogi::cString::ConvertToMultiByte(wTest, Test);
+
+	Mogi::cString StringTest;
+	StringTest.GetWString();
+
 
 	
 }

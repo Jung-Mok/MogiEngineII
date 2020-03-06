@@ -9,4 +9,20 @@
 
 // 여기에 미리 컴파일하려는 헤더 추가
 
+#include "MogiEngineII.h"
+
+#ifdef _DEBUG
+#ifdef _WIN64
+#pragma comment(lib, "../../Lib/MogiEngineII_64d.lib")
+#else // _WIN64
+#pragma comment(lib, "../../Lib/MogiEngineII_32d.lib")
+#endif // _WIN64
+#else 
+#ifdef _WIN64
+#pragma comment(lib, "../../Lib/MogiEngineII_64.lib")
+#else // _WIN64
+#pragma comment(lib, "../../Lib/MogiEngineII_32.lib")
+#endif // _WIN64
+#endif
+
 #endif //PCH_H
