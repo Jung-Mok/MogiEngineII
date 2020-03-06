@@ -19,6 +19,19 @@ namespace Mogi
 		return wstrRet;
 	}
 
+	bool cString::Format(char const* pFormat, ...)
+	{
+		char Buffer[MAX_STRING_BUFFER_SIZE] = { 0 };
+		va_list Args;
+		va_start(Args, pFormat);
+		vsprintf_s(Buffer, MAX_STRING_BUFFER_SIZE, pFormat, Args);
+		va_end(Args);
+
+		m_String += Buffer;
+
+		return true;
+	}
+
 	bool cString::ConvertToUnicode(IN std::string const& strSrc, OUT std::wstring& wstrDst)
 	{
 		size_t const BUFFER_SIZE = (strSrc.size() * 2);

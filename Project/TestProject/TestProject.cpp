@@ -14,6 +14,7 @@ int main()
 
 	Mogi::cString StringTest;
 	StringTest.GetWString();
+	StringTest.Format("test : %d", 111);
 
 
 	

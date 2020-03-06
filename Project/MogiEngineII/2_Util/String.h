@@ -2,6 +2,8 @@
 
 namespace Mogi
 {
+	#define MAX_STRING_BUFFER_SIZE 1024
+
 	class cString
 	{
 	public:
@@ -13,15 +15,10 @@ namespace Mogi
 		size_t										size()										{ return m_String.size();		}
 
 		std::wstring								GetWString();
+		bool										Format(char const* pFormat, ...);
 		
 
 	public:
-		template< typename T1 >
-		cString& operator += (T1 const& rhs)
-		{
-
-		}
-
 		template<typename T>
 		cString& operator <<(T const& rhs)
 		{
