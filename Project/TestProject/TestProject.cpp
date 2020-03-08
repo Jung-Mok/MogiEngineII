@@ -9,13 +9,18 @@ int main()
 	std::string Test("test");
 	std::wstring wTest(L"temp");
 
-	Mogi::cString::ConvertToUnicode(Test, wTest);
-	Mogi::cString::ConvertToMultiByte(wTest, Test);
+	nMogi::cString::ConvertToUnicode(Test, wTest);
+	nMogi::cString::ConvertToMultiByte(wTest, Test);
 
-	Mogi::cString StringTest;
+	nMogi::cString StringTest;
 	//StringTest.GetWString();
 	StringTest.Format("test : %d", 111);
 	StringTest << "testtest";
+	StringTest = "tsete";
+	StringTest << 11.0f;
+
+	std::string num("10000.01");
+	double vvvv = nMogi::cString::AtoF(num);
 
 
 	

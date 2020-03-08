@@ -1,4 +1,7 @@
 #pragma once
+
+#include <stdlib.h>
+#include <stdio.h>
 #include <windows.h>
 #include <string>
 
