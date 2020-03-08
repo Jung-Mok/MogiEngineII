@@ -25,6 +25,18 @@
     <Filter Include="MogiEngineII\1_Exception">
       <UniqueIdentifier>{f1c77840-241b-42c2-9321-53dd19b805a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MogiEngineII\1_Exception\StackWalker">
+      <UniqueIdentifier>{b1238afc-ba70-4377-8ef0-e75eba580fbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MogiEngineII\0_Header">
+      <UniqueIdentifier>{722502fc-498b-4c60-821d-5cb71174b43a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MogiEngineII\1_Exception\MiniDump">
+      <UniqueIdentifier>{4fd31bbb-6f21-4054-866d-5b0d1dbadadf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MogiEngineII\1_Exception\Exception">
+      <UniqueIdentifier>{c3f10326-2b4f-4e5d-8230-9852565b8579}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -42,6 +54,24 @@
     <ClInclude Include="MogiEngineII.h">
       <Filter>MogiEngineII</Filter>
     </ClInclude>
+    <ClInclude Include="MogiException.h">
+      <Filter>MogiEngineII\1_Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="1_Exception\StackWalker.h">
+      <Filter>MogiEngineII\1_Exception\StackWalker</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonHeader.h">
+      <Filter>MogiEngineII\0_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="1_Exception\MiniDump.h">
+      <Filter>MogiEngineII\1_Exception\MiniDump</Filter>
+    </ClInclude>
+    <ClInclude Include="1_Exception\Exception.h">
+      <Filter>MogiEngineII\1_Exception\Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="1_Exception\ExceptionCode.h">
+      <Filter>MogiEngineII\1_Exception\Exception</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MogiEngineII.cpp">
@@ -53,5 +83,19 @@
     <ClCompile Include="2_Util\String.cpp">
       <Filter>MogiEngineII\2_Util\String</Filter>
     </ClCompile>
+    <ClCompile Include="1_Exception\StackWalker.cpp">
+      <Filter>MogiEngineII\1_Exception\StackWalker</Filter>
+    </ClCompile>
+    <ClCompile Include="1_Exception\MiniDump.cpp">
+      <Filter>MogiEngineII\1_Exception\MiniDump</Filter>
+    </ClCompile>
+    <ClCompile Include="1_Exception\Exception.cpp">
+      <Filter>MogiEngineII\1_Exception\Exception</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="1_Exception\ExceptionText.txt">
+      <Filter>MogiEngineII\1_Exception\Exception</Filter>
+    </Text>
   </ItemGroup>
 </Project>

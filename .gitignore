@@ -212,3 +212,9 @@ Project/MogiEngineII/x64/Debug/MogiEngineII.vcxproj.FileListAbsolute.txt
 Project/TestProject/x64/Debug/TestProject.Build.CppClean.log
 
 Project/TestProject/x64/Debug/TestProject.vcxproj.FileListAbsolute.txt
+
+Project/MogiEngineII/x64/Debug/Exception.obj
+
+Project/MogiEngineII/x64/Debug/MiniDump.obj
+
+Project/MogiEngineII/x64/Debug/StackWalker.obj

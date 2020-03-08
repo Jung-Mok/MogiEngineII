@@ -204,6 +204,23 @@ namespace nMogi
 		return Temp;
 	}
 
+	bool cString::operator==(cString const& strSrc)const
+	{
+		return (m_String == strSrc.m_String);
+	}
+
+	bool cString::operator == (std::string const& strSrc)const
+	{
+		return (m_String == strSrc);
+	}
+
+	bool cString::operator==(std::wstring const& wstrSrc)const
+	{
+		std::string Temp;
+		cString::ConvertToMultiByte(wstrSrc, Temp);
+		return (m_String == Temp);
+	}
+
 	bool cString::ConvertToUnicode(IN std::string const& strSrc, OUT std::wstring& wstrDst)
 	{
 		size_t const BUFFER_SIZE = (strSrc.size() * 2);

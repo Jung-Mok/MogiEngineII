@@ -14,6 +14,7 @@ namespace nMogi
 	public:
 		const char*									c_str()										{	return m_String.c_str();		}
 		size_t										size()										{	return m_String.size();			}
+		size_t										length()									{	return m_String.length();		}
 
 		std::wstring								GetWString();
 		bool										Format(char const* pFormat, ...);
@@ -48,6 +49,10 @@ namespace nMogi
 	public:
 		operator std::string const() const throw();
 		operator std::wstring const() const throw();
+
+		bool operator == (nMogi::cString const& strSrc)const;
+		bool operator == (std::string const& strSrc)const;
+		bool operator == (std::wstring const& wstrSrc)const;
 
 		template<typename T>						cString& operator <<(T const& Src)			{	this->Append(Src);		return *this;	}
 		template<typename T>						cString& operator +=(T const& Src)			{	this->Append(Src);		return *this;	}
