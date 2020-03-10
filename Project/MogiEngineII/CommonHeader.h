@@ -12,8 +12,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <windows.h>
-#include <string>
-#include <DbgHelp.h>
 #include <winsock2.h>
 #include <mswsock.h>
 #include <process.h>
@@ -21,3 +19,10 @@
 #include <Ws2tcpip.h>
 #include <eh.h>  
 #include <assert.h>
+
+// STL
+#include <string>
+#include <queue>
+#include <map>
+#include <unordered_map>
+#include <mutex>

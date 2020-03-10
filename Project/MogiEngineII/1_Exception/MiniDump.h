@@ -10,6 +10,7 @@ namespace nMogi
 		static void									TransFunc(IN unsigned int _ExceptionCode, IN EXCEPTION_POINTERS* _pExceptionPointers);
 		static void									PrintLastError(IN DWORD _Error = GetLastError());
 		static LONG WINAPI							UnHandledExceptionFilter(IN nMogi::cException& _ExceptionInfo);
+		static LONG WINAPI							OnExceptionFilter(PEXCEPTION_POINTERS pExceptionInfo);
 
 		static void									DumpTest();
 

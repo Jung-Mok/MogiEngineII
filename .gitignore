@@ -218,3 +218,13 @@ Project/MogiEngineII/x64/Debug/Exception.obj
 Project/MogiEngineII/x64/Debug/MiniDump.obj
 
 Project/MogiEngineII/x64/Debug/StackWalker.obj
+
+Project/TestProject/x64/Debug/TestProject.tlog/link-cvtres.read.1.tlog
+
+Project/TestProject/x64/Debug/TestProject.tlog/link-cvtres.write.1.tlog
+
+Project/TestProject/x64/Debug/TestProject.tlog/link-rc.read.1.tlog
+
+Project/TestProject/x64/Debug/TestProject.tlog/link-rc.write.1.tlog
+
+Project/TestProject/x64/Debug/TestProject.tlog/unsuccessfulbuild

@@ -116,16 +116,98 @@ namespace nMogi
 		//현재 프로세스에 대한 덤프 기록을 실행합니다.
 		BOOL Success = Dump(GetCurrentProcess(), GetCurrentProcessId(), hFileHandle, MiniDumpNormal, &MiniDumpExceptionInfo, nullptr, nullptr);
 
+		//OnExceptionFilter(_ExceptionInfo.GetInformation());
+
 		//SetUnhandledExceptionFilter(PreviousExceptionFilter);
 		CloseHandle(hFileHandle);
 		//덤프 기록 설공시 수행
 		if (FALSE == Success)
 		{
-
 			return EXCEPTION_CONTINUE_SEARCH;
 		}
-			
 
+		return EXCEPTION_EXECUTE_HANDLER;
+	}
+
+	LONG WINAPI cMiniDump::OnExceptionFilter(PEXCEPTION_POINTERS pExceptionInfo)
+	{
+		if (NULL == pExceptionInfo)
+		{
+			return EXCEPTION_CONTINUE_SEARCH;
+		}
+
+		HANDLE const hCurrentProcess = ::GetCurrentProcess();
+		//    HANDLE const hCurrentThread = ::GetCurrentThread();
+
+		char FileName[MAX_PATH];
+		if (GetModuleFileNameA(NULL, FileName, MAX_PATH))
+		{
+			PathStripPathA(FileName);
+			PathRemoveExtensionA(FileName);
+		}
+
+		// Initialize symbols..
+		::SymSetOptions(SYMOPT_DEFERRED_LOADS | SYMOPT_UNDNAME | SYMOPT_LOAD_LINES);
+		BOOL const bInit = ::SymInitialize(hCurrentProcess, NULL, TRUE);
+		if (bInit)
+		{
+			// Create StackDump File
+			char szFileName[MAX_PATH] = { 0, };
+			{
+				SYSTEMTIME t;
+				::GetLocalTime(&t);
+
+				::sprintf_s(szFileName, MAX_PATH, "%s %04d-%02d-%02d %02d-%02d-%02d.txt",
+					FileName,
+					t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);
+			}
+
+			FILE* pFile = nullptr;
+			errno_t const err = ::fopen_s(&pFile, szFileName, "at+");
+			if (!err && pFile)
+			{
+				char szDate[MAX_PATH] = { 0, };
+				char szTime[MAX_PATH] = { 0, };
+				::_strdate_s(szDate, sizeof(szDate));
+				::_strtime_s(szTime, sizeof(szTime));
+
+				::fprintf(pFile, "*============================================================*\n");
+				::fprintf(pFile, "\tDate / Time : [%s %s]\n", szDate, szTime);
+				::fprintf(pFile, "\tProcessID / ThreadID : [0x%08X] / [0x%08X]\n", GetCurrentProcessId(), GetCurrentThreadId());
+				::fprintf(pFile, "\tExceptionCode : [0x%08X]\n", pExceptionInfo->ExceptionRecord->ExceptionCode);
+				::fprintf(pFile, "\tCommandLine : %s\n", GetCommandLineA());
+				::fprintf(pFile, "*============================================================*\n");
+
+				::printf("*============================================================*\n");
+				::printf("\tUnhandled excetpion triggerd!\n");
+				::printf("\tDate / Time : [%s %s]\n", szDate, szTime);
+				::printf("\tProcessID / ThreadID : [0x%08X] / [0x%08X]\n", GetCurrentProcessId(), GetCurrentThreadId());
+				::printf("\tExceptionCode : [0x%08X]\n", pExceptionInfo->ExceptionRecord->ExceptionCode);
+				::printf("\tCommandLine : %s\n", GetCommandLineA());
+
+
+				StackWalkerToFile sw(pFile);  // output to console
+				sw.ShowCallstack(GetCurrentThread(), pExceptionInfo->ContextRecord);
+
+				::fprintf(pFile, "\n");
+			}
+
+			if (pFile)
+			{
+				fclose(pFile);
+			}
+
+			::SymCleanup(hCurrentProcess);
+		}
+
+		//if (ms_kDumpLevel)
+		//{
+		//	::printf("\tWriting Dump....\n");
+		//	::printf("*============================================================*\n");
+		//	return WriteDump(pExceptionInfo);
+		//}
+
+		::printf("*============================================================*\n");
 		return EXCEPTION_EXECUTE_HANDLER;
 	}
 
@@ -138,16 +220,17 @@ namespace nMogi
 
 		for (int i = 0; i < 5; ++i)
 		{
-			//try
-			//{
-			//	int* p = nullptr;
-			//}
-			//catch (nMogi::cException e)
-			//{
-			//	printf("Caught a __try exception with SE_Exception.\n");
-			//	printf("nSE = 0x%x\n", e.GetErrorCode());
-			//}
-			//Sleep(1000);
+			try
+			{
+				int* p = nullptr;
+				*p = 1;
+			}
+			catch (nMogi::cException e)
+			{
+				printf("Caught a __try exception with SE_Exception.\n");
+				printf("nSE = 0x%x\n", e.GetErrorCode());
+			}
+			Sleep(1000);
 		}
 
 	}
