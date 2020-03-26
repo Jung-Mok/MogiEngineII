@@ -1,6 +1,7 @@
 #pragma once
 
 #pragma comment(lib, "shlwapi.lib")
+#pragma comment( lib, "dbghelp.lib" )
 
 #include <DbgHelp.h>
 #include <shlwapi.h>

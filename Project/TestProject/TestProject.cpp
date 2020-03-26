@@ -4,9 +4,11 @@
 #include "pch.h"
 #include <iostream>
 
+
+
 int main()
 {
-	nMogi::cMiniDump::DumpTest();
+	nMogi::cException temp;
 
 
 	

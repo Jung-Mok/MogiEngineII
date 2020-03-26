@@ -55,7 +55,7 @@ namespace nMogi
 		LocalFree(strMsg);
 	}
 
-	LONG WINAPI cMiniDump::UnHandledExceptionFilter(IN nMogi::cException& _ExceptionInfo)
+	long cMiniDump::UnHandledExceptionFilter(IN nMogi::cException& _ExceptionInfo)
 	{
 		//반드시 로딩
 		HMODULE DllHandle = LoadLibraryA("DBGHELP.DLL");
@@ -116,7 +116,7 @@ namespace nMogi
 		//현재 프로세스에 대한 덤프 기록을 실행합니다.
 		BOOL Success = Dump(GetCurrentProcess(), GetCurrentProcessId(), hFileHandle, MiniDumpNormal, &MiniDumpExceptionInfo, nullptr, nullptr);
 
-		//OnExceptionFilter(_ExceptionInfo.GetInformation());
+		OnExceptionFilter(_ExceptionInfo.GetInformation());
 
 		//SetUnhandledExceptionFilter(PreviousExceptionFilter);
 		CloseHandle(hFileHandle);
@@ -129,7 +129,7 @@ namespace nMogi
 		return EXCEPTION_EXECUTE_HANDLER;
 	}
 
-	LONG WINAPI cMiniDump::OnExceptionFilter(PEXCEPTION_POINTERS pExceptionInfo)
+	long cMiniDump::OnExceptionFilter(PEXCEPTION_POINTERS pExceptionInfo)
 	{
 		if (NULL == pExceptionInfo)
 		{
@@ -222,8 +222,8 @@ namespace nMogi
 		{
 			try
 			{
-				int* p = nullptr;
-				*p = 1;
+			//	int* p = nullptr;
+			//	*p = 1;
 			}
 			catch (nMogi::cException e)
 			{
